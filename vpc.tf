@@ -16,3 +16,8 @@ resource "aws_instance" "fromAMI" {
     Name = "Infrabuild"
   }
 }
+resource "aws_s3_bucket" "temps3" {
+    bucket = "tapanbucket007" 
+    acl = "private"   
+}
+

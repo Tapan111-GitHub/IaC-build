@@ -24,7 +24,7 @@ resource "aws_s3_bucket" "temps3" {
 
 resource "aws_db_instance" "rds_instance" {
 allocated_storage = 20
-identifier = "rds-terraform"
+identifier = "rds-tapan"
 storage_type = "gp2"
 engine = "mysql"
 engine_version = "8.0.27"

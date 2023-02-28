@@ -16,19 +16,27 @@ resource "aws_instance" "fromAMI" {
     Name = "Infrabuild"
   }
 }
+
 resource "aws_s3_bucket" "temps3" {
     bucket = "tapanbucket007" 
     acl = "private"   
 }
-resource "aws_db_instance" "default" {
-  allocated_storage    = 10
-  db_name              = "mydb"
-  engine               = "mysql"
-  engine_version       = "5.7"
-  instance_class       = "db.t3.micro"
-  username             = "foo"
-  password             = "foobarbaz"
-  parameter_group_name = "default.mysql5.7"
-  skip_final_snapshot  = true
-}
 
+resource "aws_db_instance" "rds_instance" {
+allocated_storage = 20
+identifier = "rds-terraform"
+storage_type = "gp2"
+engine = "mysql"
+engine_version = "8.0.27"
+instance_class = "db.t2.micro"
+name = "Tapand"
+username = "admin"
+password = "tapan111"
+publicly_accessible    = true
+skip_final_snapshot    = true
+
+
+  tags = {
+    Name = "ExampleRDSServerInstance"
+  }
+}
